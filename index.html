@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    *{
+        color:black;
+        background-color:grey;
+        padding:0;
+        margin:0;
+        height:0;
+        }
+        div .box{
+        display:flex;
+        width:100%;
+        height:60%;
+        }
+        div  button{
+         
+         color:white;
+         background-color:grey;
+         border:none;
+         font-size:23px;
+         width:21%;
+         padding:0 2%;
+         margin:0 1.2%;
+         height:50px;
+         position: relative;
+         
+        }
+        
+        
+        header{
+        padding :12px 16px;
+        background-color:whitesmoke;
+        margin:10px 12px;
+        height:30%;
+        color: black;
+        }
+        body{
+        height:600px;
+        }
+        section{
+        padding:12px 20px;
+        }
+        </style>
+        
+<header >
+    <p id="display"></p>
+    </header>
+    
+    <section>
+    <div class="box">
+        <div class="buttons">
+    <button class="button">AC</button>
+    <button class="button" >DEL</button>
+    <button class="button">*</button>
+    <button class="button" >X³</button>
+    
+    <button class="button" >7</button>
+    <button class="button" >8</button>
+    <button class="button">9</button>
+    <button class="button">-</button>
+    <button class="button">4</button>
+    <button class="button">5</button>
+    <button  class="button">6</button>
+    <button class="button" >+</button>
+    <button class="button" >1</button>
+    <button class="button" >2</button>
+    <button class="button" >3</button>
+    <button class="button"> /</button>
+    <button class="button" >X²</button>
+    <button class="button" >0</button>
+    <button class="button" >.</button>
+    <button class="button" id="equal">=</button>
+        </div>
+    </div>
+    </section>
+    <script>
+     let display=document.getElementById('display');
+     let buttons =Array.from(document.getElementsByClassName('button'));
+     console.log(buttons);
+     buttons.map(button =>{
+        button.addEventListener('click',(e) => {
+            
+              switch(e.target.innerText){
+                  case 'AC':
+                    display.innerText='';
+                    break;
+                  case 'DEL':
+                    if(display.innerText){
+                        display.innerText=display.innerText.slice(0,-1);
+                    }
+                    break;
+                    case '=':
+                    try{
+                       display.innerText=eval(display.innerText);}
+                       catch{
+                           display.innerText="Math error!";
+                       }
+                       break;
+                    case 'X²':
+                      try{
+                        if(isNaN(display.innerText)) throw "not a number";
+
+                       display.innerText=eval(display.innerText**2);}
+                       catch{
+                        display.innerText="Math error!";
+
+                       }
+                       break;
+                       case 'X³':
+                      try{
+                        if(isNaN(display.innerText)) throw "not a number";
+
+                       display.innerText=eval(display.innerText**3);}
+                       catch{
+                        display.innerText="Math error!";
+
+                       }
+                       break;
+                  
+                    default:
+                       display.innerText += e.target.innerText;
+
+              }
+
+
+
+        });
+
+     });
+    </script>
+    
+    
+    
+        
+        
+</body>
+</html>
+ 
